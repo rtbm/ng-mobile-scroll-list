@@ -1,0 +1,22 @@
+## Project
+bower_components
+node_modules
+
+## Cordova
+platforms
+plugins
+www
+
+## npm
+*.log
+
+## WebStorm
+.idea
+
+## Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+bin
+.vs
