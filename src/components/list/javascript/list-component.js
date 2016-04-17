@@ -13,16 +13,16 @@ const listComponent = {
     let debouncer = false;
 
     const setActiveItem = () => {
-      const target = Math.floor($element[0].scrollTop / 65);
-      this.activeIndex = target < maxIndex ? target : maxIndex;
-      debouncer = false;
+      if(!debouncer) {
+        $timeout(() => {
+          const target = Math.floor($element[0].scrollTop / 65);
+          this.activeIndex = target < maxIndex ? target : maxIndex;
+          debouncer = false;
+        }, 50);
+      }
     };
 
-    $element.bind('scroll', () => {
-      if(debouncer) { $timeout.cancel(debouncer); }
-      debouncer = $timeout(() => setActiveItem(), 5);
-    });
-
+    $element.bind('scroll', () => setActiveItem());
     $scope.$on('destroy', () => $element.unbind('scroll'));
   }
 };
