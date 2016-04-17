@@ -14,7 +14,7 @@ const listComponent = {
 
     const setActiveItem = () => {
       if(!debouncer) {
-        $timeout(() => {
+        debouncer = $timeout(() => {
           const target = Math.floor($element[0].scrollTop / 65);
           this.activeIndex = target < maxIndex ? target : maxIndex;
           debouncer = false;
